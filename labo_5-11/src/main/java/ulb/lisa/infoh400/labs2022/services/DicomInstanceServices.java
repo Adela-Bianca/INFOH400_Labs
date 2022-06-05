@@ -36,7 +36,8 @@ public class DicomInstanceServices {
     
     public DicomInstanceServices(Image image){
         this.image = image;
-        this.instanceFile = new File("d:/data/pacs", this.image.getInstanceuid());
+        //The path should be a setting of the program and not hardcoded
+        this.instanceFile = new File("D:/data/localpacs", this.image.getInstanceuid());
     }
 
     public java.awt.Image getDisplayableImage() {

@@ -526,7 +526,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void startSCPButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startSCPButtonActionPerformed
         if( dps == null )
-            dps = new DicomProviderServices("HISSCP", 11113, new File("d:/data/localpacs"));
+            dps = new DicomProviderServices("STORESCP",
+                    11113, //New port 
+                    new File("D:/data/localpacs")); //Path to store images
         
         if( dps.isReceiverThreadRunning() ){
             dps.stopSCPService();

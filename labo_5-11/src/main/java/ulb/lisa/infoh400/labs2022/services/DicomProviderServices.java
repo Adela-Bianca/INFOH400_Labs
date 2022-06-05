@@ -61,8 +61,11 @@ public class DicomProviderServices {
 
         @Override
         public void sendReceivedObjectIndication(String dicomFileName, String transferSyntax, String callingAETitle) throws DicomNetworkException, DicomException, IOException {
+            //To debug the dicom file that are send via CStore
             LOGGER.info("Received DICOM file: " + dicomFileName + " (calling AET = " + callingAETitle + ")");
+            
             DicomInstanceServices dis = new DicomInstanceServices(new File(dicomFileName));
+            
             if(dis.sendInstanceToSCP()){
                 if( dis.saveInstanceToDatabase() ){
                     LOGGER.info("Received object forwared & saved.");
