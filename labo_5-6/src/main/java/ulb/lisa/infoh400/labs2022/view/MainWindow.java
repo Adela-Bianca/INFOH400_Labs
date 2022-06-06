@@ -9,7 +9,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.util.List;
-import java.util.logging.Level;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import org.apache.logging.log4j.LogManager;
@@ -23,7 +22,6 @@ import ulb.lisa.infoh400.labs2022.model.Doctor;
 import ulb.lisa.infoh400.labs2022.model.Image;
 import ulb.lisa.infoh400.labs2022.model.Patient;
 import ulb.lisa.infoh400.labs2022.services.DicomProviderServices;
-import ulb.lisa.infoh400.labs2022.services.HL7Services;
 
 /**
  *
@@ -87,7 +85,6 @@ public class MainWindow extends javax.swing.JFrame {
         deleteDoctorButton = new javax.swing.JButton();
         deleteImageButton = new javax.swing.JButton();
         startSCPButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
 
         doctorTextLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         doctorTextLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -240,13 +237,6 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Start HL7");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -311,9 +301,7 @@ public class MainWindow extends javax.swing.JFrame {
                                     .addComponent(ImageImageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(ImageTextLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(startSCPButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(startSCPButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -362,13 +350,11 @@ public class MainWindow extends javax.swing.JFrame {
                             .addComponent(addImageButton)
                             .addComponent(startSCPButton))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(editAppointmentButton)
-                                .addComponent(deleteAppointmentButton)
-                                .addComponent(editImageButton, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(deleteImageButton, javax.swing.GroupLayout.Alignment.LEADING)))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(editAppointmentButton)
+                            .addComponent(deleteAppointmentButton)
+                            .addComponent(editImageButton, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(deleteImageButton, javax.swing.GroupLayout.Alignment.LEADING))))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
                 .addContainerGap())
@@ -535,10 +521,6 @@ public class MainWindow extends javax.swing.JFrame {
             DicomInstanceWindow imagePopup = new DicomInstanceWindow((Image) selected);
             imagePopup.setVisible(true);
         }
-        if(evt.getClickCount() == 2 && selected.getClass().getSimpleName().equals("Patient")){
-            HL7SendWindow hl7Popup = new HL7SendWindow((Patient) selected);
-            hl7Popup.setVisible(true);
-        }
     }//GEN-LAST:event_itemsListMouseClicked
 
     private void startSCPButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startSCPButtonActionPerformed
@@ -556,14 +538,6 @@ public class MainWindow extends javax.swing.JFrame {
             startSCPButton.setText("Stop SCP");
         }
     }//GEN-LAST:event_startSCPButtonActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-//        HL7Services hl7 = new HL7Services();
-        
-  //      hl7.startHL7Listener(54321);
-        
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
        
     /**
      * @param args the command line arguments
@@ -624,7 +598,6 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton editImageButton;
     private javax.swing.JButton editPatientButton;
     private javax.swing.JList<String> itemsList;
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton listAppointmentsButton;
     private javax.swing.JButton listDoctorsButton;
