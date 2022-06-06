@@ -116,14 +116,18 @@ public class HL7SendWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void hl7SendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hl7SendButtonActionPerformed
+        // Retreive the values in the field
         String host = hl7HostTextField.getText();
         int port  = Integer.valueOf(hl7PortTextField.getText());
         
+        //TODO : check version of HL7 no positive acknoledgment when sending a message
+        //Create the hl7 message and send it
         HL7Services hl7 = new HL7Services();
         ADT_A01 adtMessage = hl7.create_ADT_A01(patient);
         hl7.send_ADT_A01(adtMessage,host,port);
     }//GEN-LAST:event_hl7SendButtonActionPerformed
 
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField hl7HostTextField;
     private javax.swing.JTextField hl7PortTextField;

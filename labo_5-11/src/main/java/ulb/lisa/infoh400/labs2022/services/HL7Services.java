@@ -8,6 +8,7 @@ import ca.uhn.hl7v2.DefaultHapiContext;
 import ca.uhn.hl7v2.HL7Exception;
 import ca.uhn.hl7v2.HapiContext;
 import ca.uhn.hl7v2.app.Connection;
+import ca.uhn.hl7v2.app.HL7Service;
 import ca.uhn.hl7v2.app.Initiator;
 import ca.uhn.hl7v2.llp.LLPException;
 import ca.uhn.hl7v2.model.Message;
@@ -15,6 +16,7 @@ import ca.uhn.hl7v2.model.v23.message.ADT_A01;
 import ca.uhn.hl7v2.model.v23.segment.MSH;
 import ca.uhn.hl7v2.model.v23.segment.PID;
 import ca.uhn.hl7v2.parser.Parser;
+import ca.uhn.hl7v2.protocol.ReceivingApplication;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -60,6 +62,27 @@ public class HL7Services {
             Logger.getLogger(HL7Services.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-            
+
+    public void startServer() {
+        int port = 54321; // Must be different from the dicom and sql server
+        HapiContext context = new DefaultHapiContext();
+        HL7Service server = context.newServer(port, false);
+  
+
+      
+        ReceivingApplication handler = new ADTReceiverApplication();
+        server.registerApplication("ADT", "A01", handler);
+
+        try {
+            server.startAndWait();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(HL7Services.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+    }
+
+  
             
 }

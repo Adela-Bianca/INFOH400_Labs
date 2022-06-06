@@ -128,7 +128,10 @@
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="startSCPButton" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="startSCPButton" max="32767" attributes="0"/>
+                  <Component id="jButton1" max="32767" attributes="0"/>
+              </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -181,20 +184,23 @@
                           <Component id="deleteDoctorButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="listAppointmentsButton" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="addAppointmentButton" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="listImagesButton" min="-2" max="-2" attributes="0"/>
                           <Component id="addImageButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="startSCPButton" min="-2" max="-2" attributes="0"/>
+                          <Component id="startSCPButton" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="editAppointmentButton" min="-2" max="-2" attributes="0"/>
-                          <Component id="deleteAppointmentButton" min="-2" max="-2" attributes="0"/>
-                          <Component id="editImageButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="deleteImageButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="editAppointmentButton" min="-2" max="-2" attributes="0"/>
+                              <Component id="deleteAppointmentButton" min="-2" max="-2" attributes="0"/>
+                              <Component id="editImageButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="deleteImageButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
@@ -468,6 +474,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="startSCPButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Start HL7"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
