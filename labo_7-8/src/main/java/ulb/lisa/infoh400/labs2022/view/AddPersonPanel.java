@@ -33,8 +33,8 @@ public class AddPersonPanel extends javax.swing.JPanel {
         this.person = person;
         
         familynameTextField.setText(person.getFamilyname());
-        firstnameTextField.setText(person.getFirstname());
-        dateofbirthTextField.setText(fmt.format(person.getDateofbirth()));
+        firstnameTextField.setText(person.getFirstName());
+        dateofbirthTextField.setText(fmt.format(person.getDateOfBirth()));
     }
     
     public Person getPerson(){
@@ -42,10 +42,10 @@ public class AddPersonPanel extends javax.swing.JPanel {
             person = new Person();
         }
         
-        person.setFamilyname(familynameTextField.getText());
-        person.setFirstname(firstnameTextField.getText());
+        person.setFamilyName(familynameTextField.getText());
+        person.setFirstName(firstnameTextField.getText());
         try {
-            person.setDateofbirth(fmt.parse(dateofbirthTextField.getText()));
+            person.setDateOfBirth(fmt.parse(dateofbirthTextField.getText()));
         } catch (ParseException ex) {
             LOGGER.error("Error setting person date of birth", ex);
         }

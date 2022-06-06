@@ -74,11 +74,11 @@ public class Person implements Serializable {
         this.idperson = idperson;
     }
 
-    public String getFirstname() {
+    public String getFirstName() {
         return firstname;
     }
 
-    public void setFirstname(String firstname) {
+    public void setFirstName(String firstname) {
         this.firstname = firstname;
     }
 
@@ -86,15 +86,15 @@ public class Person implements Serializable {
         return familyname;
     }
 
-    public void setFamilyname(String familyname) {
+    public void setFamilyName(String familyname) {
         this.familyname = familyname;
     }
 
-    public Date getDateofbirth() {
+    public Date getDateOfBirth() {
         return dateofbirth;
     }
 
-    public void setDateofbirth(Date dateofbirth) {
+    public void setDateOfBirth(Date dateofbirth) {
         this.dateofbirth = dateofbirth;
     }
 
@@ -139,6 +139,7 @@ public class Person implements Serializable {
     @Override
     public String toString() {
         SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
+        if (dateofbirth == null) return familyname.toUpperCase() + " " + firstname + " ( unknown )";
         return familyname.toUpperCase() + " " + firstname + " (" + fmt.format(dateofbirth) + ")";
     }
     

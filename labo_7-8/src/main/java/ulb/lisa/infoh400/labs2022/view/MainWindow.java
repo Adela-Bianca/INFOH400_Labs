@@ -22,6 +22,7 @@ import ulb.lisa.infoh400.labs2022.model.Doctor;
 import ulb.lisa.infoh400.labs2022.model.Image;
 import ulb.lisa.infoh400.labs2022.model.Patient;
 import ulb.lisa.infoh400.labs2022.services.DicomProviderServices;
+import ulb.lisa.infoh400.labs2022.services.FHIRServices;
 import ulb.lisa.infoh400.labs2022.services.HL7Services;
 
 /**
@@ -600,7 +601,8 @@ public class MainWindow extends javax.swing.JFrame {
         //</editor-fold>
 
         LOGGER.info("Displaying main window");
-                
+        
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

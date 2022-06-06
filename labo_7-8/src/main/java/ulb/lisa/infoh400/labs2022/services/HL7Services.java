@@ -90,7 +90,7 @@ public class HL7Services {
             
             PID pid = adt.getPID();
             pid.getPatientName(0).getFamilyName().getSurname().setValue(patient.getIdperson().getFamilyname());
-            pid.getPatientName(0).getGivenName().setValue(patient.getIdperson().getFirstname());
+            pid.getPatientName(0).getGivenName().setValue(patient.getIdperson().getFirstName());
             pid.getPatientIdentifierList(0).getID().setValue(String.valueOf(patient.getIdpatient()));
         } catch (DataTypeException ex) {
             LOGGER.error("Failed to create ADT_A01 message.", ex);
@@ -186,9 +186,9 @@ public class HL7Services {
             Person person = personCtrl.findDuplicate(firstName, lastName, dateOfBirth);
             if( person == null ){
                 person = new Person();
-                person.setDateofbirth(dateOfBirth);
-                person.setFamilyname(lastName);
-                person.setFirstname(firstName);
+                person.setDateOfBirth(dateOfBirth);
+                person.setFamilyName(lastName);
+                person.setFirstName(firstName);
                 
                 personCtrl.create(person);
                 
