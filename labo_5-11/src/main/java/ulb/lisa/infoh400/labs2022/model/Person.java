@@ -73,7 +73,7 @@ public class Person implements Serializable {
         this.idperson = idperson;
     }
 
-    public String getFirstname() {
+    public String getFirstName() {
         return firstname;
     }
 
@@ -81,7 +81,7 @@ public class Person implements Serializable {
         this.firstname = firstname;
     }
 
-    public String getFamilyname() {
+    public String getFamilyName() {
         return familyname;
     }
 

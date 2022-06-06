@@ -32,8 +32,8 @@ public class AddPersonPanel extends javax.swing.JPanel {
     public void setPerson(Person person){
         this.person = person;
         
-        familynameTextField.setText(person.getFamilyname());
-        firstnameTextField.setText(person.getFirstname());
+        familynameTextField.setText(person.getFamilyName());
+        firstnameTextField.setText(person.getFirstName());
         dateofbirthTextField.setText(fmt.format(person.getDateofbirth()));
     }
     
