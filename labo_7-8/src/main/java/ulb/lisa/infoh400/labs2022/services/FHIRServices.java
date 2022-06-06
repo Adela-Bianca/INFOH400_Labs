@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.Bundle.BundleEntryComponent;
+import org.hl7.fhir.r4.model.ContactPoint;
+import org.hl7.fhir.r4.model.IdType;
 import ulb.lisa.infoh400.labs2022.model.Patient;
 import ulb.lisa.infoh400.labs2022.model.Person;
 
@@ -19,6 +21,42 @@ import ulb.lisa.infoh400.labs2022.model.Person;
  */
 public class FHIRServices {
     
+    
+    public static Patient getPatient(org.hl7.fhir.r4.model.Patient patientResource){
+        Patient patient = new Patient();
+        Person person = new Person();
+        person.setFirstName(patientResource.getNameFirstRep().getGivenAsSingleString());
+        person.setFamilyName(patientResource.getNameFirstRep().getFamily());
+        person.setDateOfBirth(patientResource.getBirthDate());
+        patient.setIdperson(person);
+        for( ContactPoint contact: patientResource.getTelecom() ){
+            if( contact.getSystem() == ContactPoint.ContactPointSystem.PHONE ){
+                patient.setPhonenumber(contact.getValue());
+            }
+        }
+        
+        return patient;
+    }
+    
+    public static org.hl7.fhir.r4.model.Patient getPatient(Patient patientInTable){
+        org.hl7.fhir.r4.model.Patient p = new org.hl7.fhir.r4.model.Patient();
+        p.addName().setFamily(patientInTable.getIdperson().getFamilyname());
+        p.getNameFirstRep().addGiven(patientInTable.getIdperson().getFirstName());
+        p.setBirthDate(patientInTable.getIdperson().getDateOfBirth());
+        p.addTelecom().setValue(patientInTable.getPhonenumber());
+        p.setId(new IdType("Patient", String.valueOf(patientInTable.getIdpatient())));
+        
+        return p;
+    }
+    
+    public static ArrayList<org.hl7.fhir.r4.model.Patient> getPatients(List<Patient> patientsInTable){
+        ArrayList<org.hl7.fhir.r4.model.Patient> patients = new ArrayList();
+        for( Patient p: patientsInTable ){
+            patients.add(getPatient(p));
+        }
+        
+        return patients;
+    }
     
     public Patient castFromFHIRIntoPatient(org.hl7.fhir.r4.model.Patient fhirPatient){
         Patient patient = new Patient();
